@@ -109,7 +109,7 @@ def card_grid(items, kind):
                     item_id = item.get("id")
                     if item_id:
                         details_kind = "movie" if kind == "movie" else "tv"
-                        if st.button("Find trailer", key=f"trailer-{details_kind}-{item_id}"):
+                        if st.button("Find trailer", key=f"trailer-{details_kind}-{item_id}-{kind}"):
                             videos = tmdb_get(f"/{details_kind}/{item_id}/videos")
                             video = next((v for v in videos.get("results", []) if v.get("site") == "YouTube" and v.get("type") in ("Trailer", "Teaser")), None)
                             if video:
